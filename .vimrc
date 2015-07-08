@@ -27,7 +27,6 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'spf13/PIV'
 Plugin 'philopon/hassistant.vim'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " Interface Plugins
 Plugin 'bling/vim-airline'
@@ -43,7 +42,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'xolox/vim-misc'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplete'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Shougo/vimproc'
 Plugin 'amix/vimrc'
 Plugin 'tpope/vim-surround'
@@ -138,6 +139,14 @@ set foldcolumn=1
 "
 " Enable syntax highlighting
 syntax enable
+if !empty($CONEMUBUILD)
+  set term=pcansi
+  set t_Co=256
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
+  set bs=indent,eol,start
+  colorscheme molokai
+endif
 
 set background=dark
 
@@ -228,6 +237,9 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Tapbar toggle
+nmap <F3> :TagbarToggle<CR>
 
 " Specify the behavior when switching between buffers
 try
@@ -709,6 +721,11 @@ endfunction
 " => Go
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_build_constraints = 1
+
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
