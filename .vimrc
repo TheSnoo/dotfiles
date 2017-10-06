@@ -30,6 +30,7 @@ Plugin 'philopon/hassistant.vim'
 
 " Interface Plugins
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
