@@ -1,3 +1,6 @@
 #Vim folder
 .vim/
 .vim/**
+#Tmux folder
+.tmux/
+.tmux/**
